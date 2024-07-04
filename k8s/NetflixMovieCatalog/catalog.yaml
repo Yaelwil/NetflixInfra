@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: NetflixFrontend-catalog
+  labels:
+    app: NetflixFrontend-catalog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: NetflixFrontend-catalog
+  template:
+    metadata:
+        labels:
+          app: NetflixFrontend-catalog
+    spec:
+      containers:
+      - name: server
+        image: davidhei/NetflixFrontend:catalog-v0.0.2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: NetflixFrontend-catalog-service
+spec:
+  selector:
+    app: NetflixFrontend-catalog
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

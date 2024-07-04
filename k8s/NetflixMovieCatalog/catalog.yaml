@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: NetflixFrontend-catalog
+  name: netflixfrontend-catalog
   labels:
-    app: NetflixFrontend-catalog
+    app: netflixfrontend-catalog
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: NetflixFrontend-catalog
+      app: netflixfrontend-catalog
   template:
     metadata:
         labels:
-          app: NetflixFrontend-catalog
+          app: netflixfrontend-catalog
     spec:
       containers:
       - name: server
@@ -24,7 +24,7 @@ metadata:
   name: netflixfrontend-catalog-service
 spec:
   selector:
-    app: NetflixFrontend-catalog
+    app: netflixfrontend-catalog
   ports:
     - protocol: TCP
       port: 8080

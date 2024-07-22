@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+    label:'general'
+    }
 
     parameters {
         string(name: 'SERVICE_NAME', defaultValue: '', description: 'Name of the service directory')
@@ -13,16 +15,16 @@ pipeline {
                     // Change directory to the SERVICE_NAME directory
                     dir('NetflixFrontend') {
                         // Change YAML manifests according to IMAGE_FULL_NAME_PARAM
-                        sh "sed -i 's/image/$IMAGE_FULL_NAME_PARAM/g' file.yaml"
+                        sed -i "s|image: .*|image: ${IMAGE_FULL_NAME_PARAM}|" frontend.yaml
 
                         // Commit the changes and push to GitHub
-                        sh """
+                        sh '''
                         git config --global user.name "Your Name"
                         git config --global user.email "your.email@example.com"
                         git add .
                         git commit -m "Update image reference in YAML file"
-                        git push
-                        """
+                        git push origin main
+                        '''
                     }
                 }
             }

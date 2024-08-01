@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: davidhei/netflix:frontend-v0.0.3
+        image: yaeli1/netflixfrontend:0.0.16
         ports:
         - containerPort: 3000
         env:

@@ -11,6 +11,8 @@ pipeline {
     stages {
         stage('Git setup') {
             steps {
+                sh 'git config user.email "you@example.com"'
+                sh 'git config user.name "Your Name"'
                 sh 'git checkout -b dev || git checkout dev'
             }
         }

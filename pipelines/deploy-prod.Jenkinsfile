@@ -11,9 +11,7 @@ pipeline {
     stages {
         stage('Git setup') {
             steps {
-                sh 'git config --global user.email "you@example.com"' // Set global email
-                sh 'git config --global user.name "Your Name"'        // Set global username
-                sh 'git checkout -b dev || git checkout dev'
+                sh 'git checkout -b main || git checkout main'
             }
         }
         stage('update YAML manifest') {

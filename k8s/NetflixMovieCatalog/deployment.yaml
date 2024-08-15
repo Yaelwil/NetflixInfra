@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: yaeli1/netflix-movie-catalog-prod:v1.0.7
+        image: yaeli1/netflix-movie-catalog-prod:v1.0.8
         ports:
         - containerPort: 8080
 ---
